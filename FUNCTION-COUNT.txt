@@ -1,0 +1,11 @@
+VERCEL SERVERLESS FUNCTION COUNT: 1
+
+Deployable Function:
+api/router.js
+
+Public API routes preserved through vercel.json rewrites: 15
+Backend handler modules bundled into the router: 15
+
+IMPORTANT:
+Do not move any file from lib/handlers/ into api/.
+Any additional JavaScript file placed under api/ may be counted as another Vercel Function.

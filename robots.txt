@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /results/
+Disallow: /dashboard/
+Sitemap: https://pajeeseo.pk/sitemap.xml

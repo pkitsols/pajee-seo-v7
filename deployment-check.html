@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Pajee SEO Deployment Check</title>
+  <meta name="description" content="Private deployment status check for the Pajee SEO website and tool APIs.">
+  <link rel="canonical" href="https://pajeeseo.pk/deployment-check.html">
+  <style>
+    :root{font-family:Inter,system-ui,sans-serif;color:#0f172a;background:#f8fafc}*{box-sizing:border-box}body{margin:0;padding:24px}.wrap{width:min(880px,100%);margin:40px auto}.card{background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:clamp(22px,5vw,42px);box-shadow:0 18px 60px rgba(15,23,42,.08)}h1{font-size:clamp(2rem,6vw,3.3rem);margin:0 0 12px;letter-spacing:-.04em}p{color:#475569;line-height:1.7}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:24px}.item{border:1px solid #e2e8f0;border-radius:14px;padding:16px}.item strong{display:block;margin-bottom:5px}.pass{border-color:#86efac;background:#f0fdf4}.warn{border-color:#fde68a;background:#fffbeb}.fail{border-color:#fca5a5;background:#fef2f2}a{color:#2563eb;font-weight:800}@media(max-width:680px){body{padding:14px}.wrap{margin:16px auto}.grid{grid-template-columns:1fr}.card{border-radius:16px}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <p><strong>Private production check</strong></p>
+      <h1>Pajee SEO deployment status</h1>
+      <p>This page checks the consolidated Hobby-plan API router and shows which optional integrations are configured.</p>
+      <div id="status" class="grid"><div class="item warn"><strong>Checking API</strong><span>Please wait…</span></div></div>
+      <p><a href="/">Return to homepage</a></p>
+    </section>
+  </main>
+  <script>
+    (async()=>{
+      const box=document.querySelector('#status');
+      const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+      try{
+        const response=await fetch('/api/router?action=health',{cache:'no-store',redirect:'follow'});
+        const contentType=response.headers.get('content-type')||'';
+        const raw=await response.text();
+        if(!contentType.includes('application/json')){
+          const preview=raw.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim().slice(0,180);
+          throw new Error(`API routing failed (HTTP ${response.status}). Expected JSON but received ${contentType||'an unknown content type'}. ${preview}`);
+        }
+        const data=JSON.parse(raw);
+        if(!response.ok)throw new Error(data.message||`HTTP ${response.status}`);
+        const items=[
+          ['API router',data.status==='ok','Reachable'],
+          ['Serverless functions',data.architecture?.serverlessFunctions===1,`${data.architecture?.serverlessFunctions??'Unknown'} deployed entry point`],
+          ['Hobby compatibility',Boolean(data.architecture?.hobbyPlanCompatible),data.architecture?.hobbyPlanCompatible?'Enabled':'Needs review'],
+          ['Gemini AI',Boolean(data.configured?.gemini),data.configured?.gemini?'Configured':'Key pending'],
+          ['PageSpeed API',Boolean(data.configured?.pageSpeed),data.configured?.pageSpeed?'Configured':'Optional key pending'],
+          ['CrUX field data',Boolean(data.configured?.crux),data.configured?.crux?'Configured':'Optional key pending'],
+          ['Open PageRank',Boolean(data.configured?.openPageRank),data.configured?.openPageRank?'Configured':'Optional key pending'],
+          ['Google OAuth',Boolean(data.configured?.googleOAuth),data.configured?.googleOAuth?'Configured':'Credentials pending'],
+          ['Contact email',Boolean(data.configured?.email),data.configured?.email?'Configured':'Resend setup pending']
+        ];
+        box.innerHTML=items.map(([label,ok,detail],index)=>`<div class="item ${ok?'pass':index<3?'fail':'warn'}"><strong>${esc(label)}</strong><span>${esc(detail)}</span></div>`).join('');
+      }catch(error){
+        box.innerHTML=`<div class="item fail"><strong>API check failed</strong><span>${esc(error.message)}</span></div>`;
+      }
+    })();
+  </script>
+</body>
+</html>
