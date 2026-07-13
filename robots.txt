@@ -1,5 +1,6 @@
 User-agent: *
-Disallow: /
+Allow: /
 Disallow: /results/
+Disallow: /reports/
 Disallow: /dashboard/
-Sitemap: https://pajee-seo-v7.vercel.app/sitemap.xml
+Sitemap: https://pajeeseo.pk/sitemap.xml

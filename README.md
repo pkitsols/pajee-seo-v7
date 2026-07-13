@@ -1,44 +1,39 @@
-# Pajee SEO — Vercel Hobby Final Build
+# Pajee SEO — Professional Website and Reporting Platform
 
-This is the GitHub/Vercel-ready production folder for the Pajee SEO multi-page website and SEO tool suite.
+This is the final multi-page, Vercel Hobby-compatible Pajee SEO website.
 
-## Hobby-plan architecture
+## Main product areas
 
-The project deploys **one Vercel Function only**:
-
-- `api/router.js`
-
-All public API routes are preserved through rewrites in `vercel.json`. The working backend modules are stored under `lib/handlers/`, so Vercel bundles them into the router instead of counting them as separate Functions.
-
-## Included tools
-
+- Conversion-focused homepage and 11 detailed service pages
 - Complete SEO Growth Report
-- Keyword Research, NLP and Search Intent
+- Keyword Intelligence
 - PageSpeed and Core Web Vitals
 - Whole Website SEO Audit
-- Organic Visibility Signals
-- AI Summary and Execution Roadmap
-- Combined Schema Validation and Schema Generator
-- AI-estimated public traffic visibility
-- Verified Google Search Console and GA4 dashboard
-- Contact form with Resend and WhatsApp fallback
+- Organic Search Performance using verified Search Console data
+- Traffic and Behaviour Analytics using verified GA4 data
+- Schema Intelligence: analyse, recommend and generate
+- AI Summary and 30/60/90-day Execution Roadmap
 
-## Accuracy policy
+## Google connection behaviour
 
-- PageSpeed and CrUX results use Google APIs when available.
-- GSC and GA4 values are shown only after the owner authorises read-only Google access.
-- AI keyword and traffic values are clearly labelled estimates and use broad ranges.
-- The website audit reports live crawl evidence, exact affected URLs, robots/sitemap links, missing-alt image URLs, broken links, Open Graph preview, RDAP age, optional Open PageRank, and Common Crawl presence.
-- Common Crawl URL samples are never presented as backlinks.
+The user connects once through read-only Google OAuth. The encrypted session is stored in an HttpOnly, Secure cookie and access tokens are refreshed when possible. Closing the browser does not intentionally disconnect the account. The user remains connected until they disconnect, clear browser cookies, revoke access in Google, or Google invalidates the refresh token. OAuth apps left in Google Testing mode may have shorter refresh-token lifetimes; production publishing is recommended for durable customer connections.
 
-## Deploy
+## Vercel Hobby architecture
 
-1. Extract the ZIP.
-2. Upload the **contents** of this folder directly to the root of a GitHub repository.
-3. Import that repository into Vercel.
-4. Use Framework Preset **Other**.
-5. Leave Build Command and Output Directory empty.
-6. Add the environment variables from `.env.example`.
-7. Deploy and open `/deployment-check.html`.
+Only three Serverless Functions are deployed:
 
-See `DEPLOY-ON-VERCEL-HOBBY.md` and `API-KEY-SETUP.md` for details.
+1. `api/router.js`
+2. `api/google/auth.js`
+3. `api/google/callback.js`
+
+The remaining tool actions are consolidated through `/api/router?action=...`.
+
+## Start here
+
+1. Read `DEPLOYMENT-GUIDE.md`.
+2. Add the variables listed in `.env.example` to Vercel.
+3. Set the exact Google redirect URI to `/api/google/callback`.
+4. Deploy and open `/deployment-check.html`.
+5. Test the tools using `FINAL-QA-REPORT.md` as the checklist.
+
+No API secrets are included in this folder.
