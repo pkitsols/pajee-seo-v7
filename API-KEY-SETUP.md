@@ -2,7 +2,7 @@
 
 ## Required for AI tools
 - `GEMINI_API_KEY` from Google AI Studio
-- `GEMINI_MODEL` defaults to `gemini-2.5-flash`
+- `GEMINI_MODEL` defaults to `gemini-3.5-flash`
 
 ## Recommended for PageSpeed production quota
 - `GOOGLE_PAGESPEED_API_KEY`

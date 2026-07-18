@@ -57,7 +57,7 @@ CONTACT_TO_EMAIL
 Recommended temporary values while using the Vercel domain:
 
 ```text
-GEMINI_MODEL=gemini-2.5-flash
+GEMINI_MODEL=gemini-3.5-flash
 GOOGLE_REDIRECT_URI=https://YOUR-PROJECT.vercel.app/api/google/callback
 CONTACT_FROM_EMAIL=Pajee SEO <onboarding@resend.dev>
 CONTACT_TO_EMAIL=pkitsol@gmail.com
