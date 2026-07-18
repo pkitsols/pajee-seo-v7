@@ -1,10 +1,11 @@
-# Vercel Environment Variables — Pajee SEO V10
+# Vercel Environment Variables — Pajee SEO V10.2
 
 Add these under **Vercel → Project → Settings → Environment Variables** for Production and Preview.
 
 ```env
 GEMINI_API_KEY=
 GEMINI_MODEL=gemini-3.5-flash
+BACKLINK_GEMINI_ASSIST=true
 
 GOOGLE_PAGESPEED_API_KEY=
 GOOGLE_CRUX_API_KEY=
@@ -20,7 +21,15 @@ CONTACT_FROM_EMAIL=Pajee SEO <onboarding@resend.dev>
 CONTACT_TO_EMAIL=pkitsol@gmail.com
 ```
 
-## Gemini model
+## Optional Gemini behaviour for backlinks
+
+```env
+BACKLINK_GEMINI_ASSIST=true
+```
+
+- `true`: Gemini 3.5 Flash may suggest extra discovery queries.
+- `false`: backlink discovery directly uses public-search fallback queries.
+- Missing key, exhausted quota, invalid model, permission failure, timeout, or temporary Gemini outage: fallback starts automatically and the report continues.
 
 Use exactly:
 
@@ -28,18 +37,8 @@ Use exactly:
 GEMINI_MODEL=gemini-3.5-flash
 ```
 
-Do not use `gemini-3.1-flash`, `gemini-2.5-flash-lite`, or a value containing `models/`. The backend also enforces `gemini-3.5-flash`, so a stale Vercel model variable cannot make the backlink tool call the invalid model.
+Do not use `gemini-3.1-flash`.
 
-## Google OAuth
+## Search Console backlink imports
 
-Add this exact Authorized Redirect URI in Google Cloud:
-
-```text
-https://YOUR-PROJECT.vercel.app/api/google/callback
-```
-
-Set the same URL as `GOOGLE_REDIRECT_URI`. The website requests read-only Search Console and Analytics access.
-
-## Resend testing
-
-`onboarding@resend.dev` is suitable only for Resend's permitted testing flow. After verifying `pajeeseo.pk`, use a sender on that domain.
+The browser import supports CSV, semicolon-delimited CSV, TSV, and plain URL/domain lists. Use Search Console's **Latest links**, **More sample links**, or **Top linking sites** export. **Top linked pages** only contains the audited site's destination URLs and is therefore not a backlink-source list.

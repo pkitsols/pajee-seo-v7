@@ -1,1 +1,1 @@
-Pajee SEO V10 — structural redesign and backlink model fix
+10.2.0
