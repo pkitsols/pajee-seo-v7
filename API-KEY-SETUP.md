@@ -1,4 +1,4 @@
-# Vercel Environment Variables — Pajee SEO V10.2
+# Vercel Environment Variables — Pajee SEO V11
 
 Add these under **Vercel → Project → Settings → Environment Variables** for Production and Preview.
 

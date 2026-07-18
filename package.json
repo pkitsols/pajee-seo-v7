@@ -1,6 +1,6 @@
 {
-  "name": "pajeeseo-v10-2-production",
-  "version": "10.2.0",
+  "name": "pajeeseo-v11-professional-reports",
+  "version": "11.0.0",
   "private": true,
   "engines": {
     "node": ">=20"
