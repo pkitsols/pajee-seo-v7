@@ -1,0 +1,1 @@
+(()=>{const f=document.querySelector('#tool-form');if(!f)return;f.addEventListener('submit',e=>{e.preventDefault();location.href='/results/keyword-intelligence/?'+new URLSearchParams(new FormData(f))})})();

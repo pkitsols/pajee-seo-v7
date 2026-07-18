@@ -1,0 +1,1 @@
+(()=>{const f=document.querySelector('#tool-form');if(!f)return;f.addEventListener('submit',e=>{e.preventDefault();const d=new URLSearchParams(new FormData(f));location.href='/results/seo-growth-report/?'+d.toString()})})();

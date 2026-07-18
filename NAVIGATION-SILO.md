@@ -1,39 +1,52 @@
 # Navigation and Silo Structure
 
-## Primary navigation
+## Main navigation
 
 - Home
 - Services
-  - Search Engine Optimization
-  - Local SEO
-  - Technical SEO
-  - eCommerce SEO
-  - SEO Audit Services
-  - Content, AEO and GEO
-  - Web Development
-  - UI/UX Design
-  - Branding
-  - Mobile App Development
-  - Digital Marketing
+  - SEO Growth
+    - Search Engine Optimization
+    - Local SEO
+    - Technical SEO
+    - eCommerce SEO
+    - SEO Audit Services
+    - Content & AEO/GEO
+  - Digital Experience
+    - Web Development
+    - UI/UX Design
+    - Branding
+    - Mobile App Development
+    - Digital Marketing
 - SEO Tools
-  - Complete SEO Growth Report
-  - AI Summary and Execution Roadmap
-  - Verified Google Performance Report
-  - Keyword Research, NLP and Intent
-  - Organic Search Performance — GSC
-  - Traffic and Analytics — GA4
-  - PageSpeed and Core Web Vitals
-  - Whole Website SEO Audit
-  - Schema Intelligence
+  - Complete Reports
+    - Complete SEO Growth Report
+    - AI Summary & Execution Roadmap
+    - Connected Google Dashboard
+  - Research & Visibility
+    - Keyword Research, NLP & Intent
+    - Organic Visibility Signals
+    - Traffic & Analytics
+  - Technical & Performance
+    - PageSpeed & Core Web Vitals
+    - Whole Website SEO Audit
+  - Structured Data
+    - Schema Intelligence
 - Case Studies
 - Resources
 - About
 - Contact
+- Get Free SEO Consultation
 
-## Report journey
+## User journeys
 
-Input page → processing state → dedicated noindex result page → exact findings and affected URLs → prioritised actions → export or consultation CTA.
+### Lead journey
+Home → service overview → individual service page → contact form → email or WhatsApp.
 
-## Google reports
+### Tool journey
+Home or Tools Hub → individual tool input → dedicated result page → implementation CTA.
 
-GSC and GA4 remain separate report sources. The target website is used to recommend the matching property first; other authorised properties are available through Change property.
+### Schema journey
+Schema Intelligence → validate URL → review errors and page intent → generate recommended schema → copy/download JSON-LD.
+
+### Traffic journey
+Traffic & Analytics → public AI estimate, or connect Google → select property and date range → verified report → CSV or print/PDF.

@@ -1,0 +1,1 @@
+(()=>{const f=document.querySelector('#tool-form');if(!f)return;f.addEventListener('submit',e=>{e.preventDefault();sessionStorage.setItem('pajee-roadmap-input',JSON.stringify(Object.fromEntries(new FormData(f))));location.href='/results/ai-roadmap/'})})();

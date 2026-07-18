@@ -1,4 +1,0 @@
-Pajee SEO Professional Reporting Platform
-Final build date: 13 July 2026
-Architecture: Static multi-page website + 3 Vercel Serverless Functions
-Google OAuth callback: /api/google/callback

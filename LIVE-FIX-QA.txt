@@ -1,0 +1,29 @@
+PAJEE SEO — API ROUTING FIX QA
+
+Confirmed root cause:
+- The deployment used trailingSlash=true.
+- /api/router?action=health was redirected to /api/router?action=health/.
+- The exact rewrite only matched /api/router?action=health.
+- Vercel returned an HTML 404 page, which caused the JSON parser error.
+- Google Connect used the same broken route pattern.
+
+Changes:
+- trailingSlash=false
+- All 15 API routes remain mapped to one function: api/router.js
+- Standard Node 302 redirect handling added for Google OAuth
+- Deployment checker now validates response content type before parsing JSON
+
+Tests passed:
+- JSON configuration parse
+- Node syntax checks
+- Health endpoint contract
+- Google authorization redirect contract
+- Google callback/token-cookie contract with controlled mock
+- Complete API contract suite: 16 passed, 0 failed
+- Function count remains 1
+
+Live checks after GitHub/Vercel redeploy:
+1. /api/router?action=health must return JSON
+2. /deployment-check must show API Router: Reachable
+3. /api/google/auth must redirect to accounts.google.com
+4. If Google then shows redirect_uri_mismatch, check the Google Cloud Authorized Redirect URI exactly.

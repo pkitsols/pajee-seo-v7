@@ -1,7 +1,11 @@
-Vercel Serverless Functions: 3
+VERCEL SERVERLESS FUNCTION COUNT: 1
 
-1. api/router.js — consolidated tools, contact, reports, status and disconnect
-2. api/google/auth.js — direct Google OAuth start route
-3. api/google/callback.js — direct Google OAuth callback route
+Deployable Function:
+api/router.js
 
-Vercel Hobby limit: 12. This project stays within the limit.
+Public API routes preserved through vercel.json rewrites: 15
+Backend handler modules bundled into the router: 15
+
+IMPORTANT:
+Do not move any file from lib/handlers/ into api/.
+Any additional JavaScript file placed under api/ may be counted as another Vercel Function.

@@ -42,7 +42,7 @@ function rateLimit(req, action) {
     'schema-intelligence'
   ]);
   const windowMs = action === 'contact' ? 10 * 60 * 1000 : 60 * 1000;
-  const maximum = action === 'contact' ? 5 : expensive.has(action) ? 20 : 60;
+  const maximum = action === 'contact' ? 5 : action === 'site-audit' ? 40 : expensive.has(action) ? 20 : 60;
   const now = Date.now();
   const key = `${clientIp(req)}:${action}`;
   const current = buckets.get(key);

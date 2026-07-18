@@ -1,0 +1,27 @@
+PAJEE SEO — GOOGLE OAUTH 404 FIX
+
+Root cause:
+The live site depended on vercel.json rewrites such as /api/google/auth -> /api/router?action=google-auth.
+The production deployment returned a native Vercel 404 for /api/google/auth, so Google could not complete the callback flow.
+
+Fix in this package:
+1. Google OAuth now uses real Vercel Function files:
+   - api/google/auth.js
+   - api/google/callback.js
+2. All other tools call the consolidated router directly:
+   - /api/router?action=health
+   - /api/router?action=pagespeed
+   - etc.
+3. No API rewrite rules are required.
+4. Total Vercel Functions: 3, safely below the Hobby limit of 12.
+
+Required Google Cloud Authorized Redirect URI:
+https://pkitsols-pajee-seo-v6.vercel.app/api/google/callback
+
+Required Vercel variable:
+GOOGLE_REDIRECT_URI=https://pkitsols-pajee-seo-v6.vercel.app/api/google/callback
+
+After replacing repository files, commit and wait for a NEW Vercel deployment.
+Then test:
+https://pkitsols-pajee-seo-v6.vercel.app/api/router?action=health
+https://pkitsols-pajee-seo-v6.vercel.app/api/google/auth
