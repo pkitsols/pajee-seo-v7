@@ -1,52 +1,27 @@
-# Pajee SEO — Vercel Hobby Final Build
+# Pajee SEO V9 — Production Website
 
-This is the GitHub/Vercel-ready production folder for the Pajee SEO multi-page website and SEO tool suite.
+This is the GitHub/Vercel root folder for the Pajee SEO multi-page website and SEO reporting tools.
 
-## Hobby-plan architecture
+## Deployment
 
-The project deploys **one Vercel Function only**:
+1. Upload the **contents of this folder** to the repository root. `index.html`, `vercel.json`, `api/`, `lib/`, `assets/`, `services/`, `tools/`, `results/`, and `reports/` must appear directly at the root.
+2. Import the repository in Vercel using Framework Preset **Other**.
+3. Leave Root Directory, Build Command and Output Directory blank/default.
+4. Add the environment variables listed in `API-KEY-SETUP-V9.md`.
+5. Deploy, then open `/deployment-check.html`.
 
-- `api/router.js`
+## Architecture
 
-All public API routes are preserved through rewrites in `vercel.json`. The working backend modules are stored under `lib/handlers/`, so Vercel bundles them into the router instead of counting them as separate Functions.
-
-## Included tools
-
-- Complete SEO Growth Report
-- Keyword Research, NLP and Search Intent
-- PageSpeed and Core Web Vitals
-- Whole Website SEO Audit
-- Organic Visibility Signals
-- AI Summary and Execution Roadmap
-- Combined Schema Validation and Schema Generator
-- AI-estimated public traffic visibility
-- Verified Google Search Console and GA4 dashboard
-- Contact form with Resend and WhatsApp fallback
+- Static responsive multi-page frontend.
+- Three Vercel Serverless Functions, within the Hobby-plan limit:
+  - `api/router.js`
+  - `api/google/auth.js`
+  - `api/google/callback.js`
+- All non-OAuth backend actions are consolidated behind `api/router.js`.
 
 ## Accuracy policy
 
-- PageSpeed and CrUX results use Google APIs when available.
-- GSC and GA4 values are shown only after the owner authorises read-only Google access.
-- AI keyword and traffic values are clearly labelled estimates and use broad ranges.
-- The website audit reports live crawl evidence, exact affected URLs, robots/sitemap links, missing-alt image URLs, broken links, Open Graph preview, RDAP age, optional Open PageRank, and Common Crawl presence.
-- Common Crawl URL samples are never presented as backlinks.
-
-## Deploy
-
-1. Extract the ZIP.
-2. Upload the **contents** of this folder directly to the root of a GitHub repository.
-3. Import that repository into Vercel.
-4. Use Framework Preset **Other**.
-5. Leave Build Command and Output Directory empty.
-6. Add the environment variables from `.env.example`.
-7. Deploy and open `/deployment-check.html`.
-
-See `DEPLOY-ON-VERCEL-HOBBY.md` and `API-KEY-SETUP.md` for details.
-
-## V8 final documents
-
-- `FINAL-V8-QA-REPORT.md` — final automated and controlled QA results
-- `DEPLOY-V8.md` — exact GitHub/Vercel deployment steps
-- `CHANGELOG-V8.md` — redesign and functionality summary
-
-The current Google OAuth routes are `/api/google/auth` and `/api/google/callback`.
+- Verified GSC/GA4 metrics are labelled separately from public or AI estimates.
+- INP is shown only when real CrUX field data is returned.
+- Backlink discovery is labelled as a verified public sample, not a complete Google backlink index.
+- No fabricated rankings, traffic, reviews, ratings, revenue, or backlink totals are generated.

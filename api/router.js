@@ -12,6 +12,7 @@ const handlers = Object.freeze({
   'ai-roadmap': require('../lib/handlers/ai-roadmap'),
   'ai-summary': require('../lib/handlers/ai-summary'),
   'schema-intelligence': require('../lib/handlers/schema-intelligence'),
+  'backlink-intelligence': require('../lib/handlers/backlink-intelligence'),
   contact: require('../lib/handlers/contact'),
   'google-auth': require('../lib/handlers/google/auth'),
   'google-callback': require('../lib/handlers/google/callback'),
@@ -39,7 +40,8 @@ function rateLimit(req, action) {
     'traffic-estimate',
     'ai-roadmap',
     'ai-summary',
-    'schema-intelligence'
+    'schema-intelligence',
+    'backlink-intelligence'
   ]);
   const windowMs = action === 'contact' ? 10 * 60 * 1000 : 60 * 1000;
   const maximum = action === 'contact' ? 5 : action === 'site-audit' ? 40 : expensive.has(action) ? 20 : 60;
